@@ -120,7 +120,7 @@ toast.success("Registration Successful")
             name="phone"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-zinc-300 text-xl">Phone</FormLabel>
+                <FormLabel className="text-zinc-300 text-xl">Personal Phone</FormLabel>
                 <FormControl>
                   <Input {...field} className="bg-zinc-800 border-zinc-700 text-white focus:ring-1 focus:ring-zinc-500" />
                 </FormControl>
@@ -135,7 +135,7 @@ toast.success("Registration Successful")
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-zinc-300 text-xl">Your Name</FormLabel>
+                <FormLabel className="text-zinc-300 text-xl">Personal Name</FormLabel>
                 <FormControl>
                   <Input {...field} className="bg-zinc-800 border-zinc-700 text-white focus:ring-1 focus:ring-zinc-500" />
                 </FormControl>
