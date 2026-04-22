@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import * as LabelPrimitive from "@radix-ui/react-label"
-import { Controller, FormProvider, useFormContext } from "react-hook-form"
+import { Controller, FormProvider, useFormContext , useFormState } from "react-hook-form"
 
 import { cn } from "@/lib/utils"
 import { Label } from "@/components/ui/label"
@@ -21,18 +21,24 @@ FormItem.displayName = "FormItem"
 
 const FormLabel = Label
 
-const FormControl = React.forwardRef<any, any>(({ ...props }, ref) => {
+const FormControl = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ ...props }, ref) => {
   return <div ref={ref} {...props} />
 })
 FormControl.displayName = "FormControl"
 
-const FormMessage = () => {
-  const { formState } = useFormContext()
-  const error = formState.errors
+const FormMessage = ({ name }: { name: string }) => {
+  const {
+    formState: { errors },
+  } = useFormContext()
 
-  return error ? (
-    <p className="text-sm text-red-500">Error</p>
-  ) : null
+  const error = errors?.[name]?.message as string | undefined
+
+  if (!error) return null
+
+  return <p className="text-sm text-red-500">{error}</p>
 }
 
 export {

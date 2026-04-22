@@ -29,14 +29,16 @@ import {
 type FormData = z.infer<typeof loginType>;
 
 export default function LoginPage() {
+  
   const router = useRouter();
-  const form = useForm<FormData>({
-    resolver: zodResolver(loginType),
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-  });
+ const form = useForm<FormData>({
+  resolver: zodResolver(loginType),
+  mode: "onSubmit",
+  defaultValues: {
+    email: "",
+    password: "",
+  },
+});
 
   const onSubmit = async (data: FormData) => {
   try {
